@@ -1,0 +1,16 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    permissions:
+      contents: write
+    uses: martoc/workflow-container-image/.github/workflows/default.yml@v0
+    with:
+      platforms: linux/arm64,linux/amd64
+    secrets: inherit
