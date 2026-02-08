@@ -13,7 +13,7 @@ class AirflowDocsIndexer:
 
     # Airflow core repository
     AIRFLOW_CORE_REPO = "https://github.com/apache/airflow.git"
-    AIRFLOW_CORE_DOCS_PATH = "docs/apache-airflow"
+    AIRFLOW_CORE_DOCS_PATH = "airflow-core/docs"
     AIRFLOW_CORE_SOURCE = "airflow-core"
     AIRFLOW_CORE_BASE_URL = "https://airflow.apache.org/docs/apache-airflow/stable"
 

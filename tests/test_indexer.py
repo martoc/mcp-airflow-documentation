@@ -251,7 +251,7 @@ def test_index_all_sources() -> None:
                 docs_path = repo_path / sparse_path
                 docs_path.mkdir(parents=True, exist_ok=True)
 
-                if "apache-airflow" in sparse_path:
+                if "airflow-core" in sparse_path:
                     (docs_path / "test.rst").write_text("Test\n====\nContent.")
                 else:
                     (docs_path / "test.md").write_text("---\ntitle: Test\n---\nContent.")

@@ -136,7 +136,7 @@ Clone only documentation directories (not entire repos):
 subprocess.run(["git", "config", "core.sparseCheckout", "true"], ...)
 
 # Set sparse path
-sparse_checkout_file.write_text("docs/apache-airflow")
+sparse_checkout_file.write_text("airflow-core/docs")
 
 # Fetch with filter
 subprocess.run(["git", "fetch", "--depth", "1", "--filter=blob:none", ...])
