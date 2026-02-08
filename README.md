@@ -23,7 +23,11 @@ This MCP server provides unified search across Apache Airflow documentation sour
 
 ```bash
 # Build image (includes pre-indexed documentation)
+# NOTE: Build takes 2-5 minutes due to documentation indexing
 docker build -t mcp-airflow-documentation .
+
+# For faster builds (index on first run instead):
+# Comment out the RUN airflow-docs-index line in Dockerfile
 
 # Add to Claude Desktop config
 {

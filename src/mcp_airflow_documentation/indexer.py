@@ -149,17 +149,16 @@ class AirflowDocsIndexer:
             sparse_path: Path within repository for sparse checkout.
             branch: Git branch to checkout.
         """
+        # Create repository directory
+        repo_path.mkdir(parents=True, exist_ok=True)
+
         # Initialise git repository
         subprocess.run(
             ["git", "init"],
-            cwd=repo_path.parent,
+            cwd=repo_path,
             check=True,
             capture_output=True,
         )
-
-        # Rename to desired directory if needed
-        if repo_path.name != ".git":
-            (repo_path.parent / ".git").rename(repo_path / ".git")
 
         # Configure sparse checkout
         subprocess.run(

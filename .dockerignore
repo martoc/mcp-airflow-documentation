@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Data (will be generated during build)
+data/*.db
+data/*.db-*
+data/tmp/
+data/repos/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Documentation (not needed in container)
+*.md
+!README.md
+
+# CI/CD
+.github/
+
+# Other
+.DS_Store
+Thumbs.db
+uv.lock
