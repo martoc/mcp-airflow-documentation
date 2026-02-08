@@ -41,11 +41,20 @@ stats:
 	uv run airflow-docs-index stats
 
 # Docker
+docker-pull:
+	docker pull martoc/mcp-airflow-documentation:latest
+
 docker-build:
 	docker build -t mcp-airflow-documentation .
 
 docker-run:
 	docker run -i --rm mcp-airflow-documentation
 
+docker-run-remote:
+	docker run -i --rm martoc/mcp-airflow-documentation:latest
+
 docker-clean:
 	docker rmi mcp-airflow-documentation
+
+docker-clean-remote:
+	docker rmi martoc/mcp-airflow-documentation:latest

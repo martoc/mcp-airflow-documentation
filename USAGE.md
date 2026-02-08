@@ -20,6 +20,18 @@ make index
 
 ### Docker Installation
 
+**Option 1: Use pre-built image (fastest)**
+
+```bash
+# Pull the pre-built image
+docker pull martoc/mcp-airflow-documentation:latest
+
+# Run the server
+docker run -i --rm martoc/mcp-airflow-documentation:latest
+```
+
+**Option 2: Build locally**
+
 ```bash
 # Build Docker image (includes pre-indexed documentation)
 make docker-build
@@ -132,7 +144,20 @@ Add to your Claude Desktop configuration (`~/Library/Application Support/Claude/
 }
 ```
 
-Or using Docker:
+Or using Docker (pre-built image):
+
+```json
+{
+  "mcpServers": {
+    "airflow-docs": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "martoc/mcp-airflow-documentation:latest"]
+    }
+  }
+}
+```
+
+Or using Docker (locally built):
 
 ```json
 {

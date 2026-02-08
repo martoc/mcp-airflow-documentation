@@ -21,13 +21,29 @@ This MCP server provides unified search across Apache Airflow documentation sour
 
 ### Using Docker (Recommended)
 
+**Option 1: Use pre-built image (fastest)**
+
+```bash
+# Pull the pre-built image
+docker pull martoc/mcp-airflow-documentation:latest
+
+# Add to Claude Desktop config
+{
+  "mcpServers": {
+    "airflow-docs": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "martoc/mcp-airflow-documentation:latest"]
+    }
+  }
+}
+```
+
+**Option 2: Build locally**
+
 ```bash
 # Build image (includes pre-indexed documentation)
 # NOTE: Build takes 2-5 minutes due to documentation indexing
 docker build -t mcp-airflow-documentation .
-
-# For faster builds (index on first run instead):
-# Comment out the RUN airflow-docs-index line in Dockerfile
 
 # Add to Claude Desktop config
 {
@@ -167,8 +183,10 @@ make index-client      # Index only Python client
 make stats             # Show database statistics
 
 # Docker
-make docker-build      # Build Docker image
-make docker-run        # Run Docker container
+make docker-pull       # Pull pre-built image
+make docker-build      # Build Docker image locally
+make docker-run        # Run local Docker container
+make docker-run-remote # Run pre-built image
 ```
 
 ### Testing
@@ -231,6 +249,16 @@ CREATE VIRTUAL TABLE documents_fts USING fts5(
 - **Memory usage**: ~50-100 MB server runtime
 - **Expected documents**: 200-300 core, 50-100 client
 
+## Container Registry
+
+Pre-built Docker images are available:
+
+```bash
+docker pull martoc/mcp-airflow-documentation:latest
+```
+
+Images are automatically built and published on each release with pre-indexed documentation for immediate use.
+
 ## Documentation
 
 - [USAGE.md](USAGE.md) - Detailed usage instructions
@@ -239,9 +267,10 @@ CREATE VIRTUAL TABLE documents_fts USING fts5(
 
 ## Requirements
 
-- Python >= 3.12
-- Git (for cloning documentation repositories)
-- Docker (optional, for containerised deployment)
+- **For Docker**: Docker or compatible container runtime
+- **For local installation**:
+  - Python >= 3.12
+  - Git (for cloning documentation repositories)
 
 ## Contributing
 

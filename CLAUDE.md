@@ -298,8 +298,21 @@ Potential improvements (not currently implemented):
 
 ### Claude Desktop
 
-Users configure in `claude_desktop_config.json`:
+Users can configure in `claude_desktop_config.json` using either the pre-built Docker image or local installation:
 
+**Using pre-built Docker image (recommended):**
+```json
+{
+  "mcpServers": {
+    "airflow-docs": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "martoc/mcp-airflow-documentation:latest"]
+    }
+  }
+}
+```
+
+**Using local installation:**
 ```json
 {
   "mcpServers": {
