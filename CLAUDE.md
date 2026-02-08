@@ -29,7 +29,7 @@ Unified in single SQLite database with source tracking field.
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                      FastMCP Server                          │
-│  (search_documentation, read_documentation, get_sections)    │
+│         (search_documentation, read_documentation)           │
 └─────────────────────┬───────────────────────────────────────┘
                       │
                       ▼
@@ -160,7 +160,7 @@ mcp-airflow-documentation/
 │   ├── database.py          # SQLite FTS5 with source support
 │   ├── models.py            # Document and SearchResult dataclasses
 │   ├── indexer.py           # Multi-repository orchestration
-│   ├── server.py            # FastMCP server with 4 tools
+│   ├── server.py            # FastMCP server with 2 tools
 │   ├── cli.py               # CLI for indexing and stats
 │   └── parsers/
 │       ├── base.py          # Abstract DocumentParser

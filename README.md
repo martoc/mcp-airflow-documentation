@@ -109,20 +109,6 @@ read_documentation(
 )
 ```
 
-### get_sections
-List available documentation sections for browsing.
-
-```python
-get_sections(source="airflow-core")  # Optional source filter
-```
-
-### get_statistics
-View database statistics including document counts by source.
-
-```python
-get_statistics()
-```
-
 ## Usage Examples
 
 **Find DAG documentation:**

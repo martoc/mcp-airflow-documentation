@@ -200,26 +200,6 @@ Read the full content of a specific documentation page.
 read_documentation(source="airflow-core", path="concepts/dags.rst")
 ```
 
-#### get_sections
-
-List available documentation sections.
-
-**Parameters:**
-- `source` (string, optional): Filter by source
-
-**Examples:**
-- `get_sections()` - List all sections
-- `get_sections(source="airflow-core")` - List core sections only
-
-#### get_statistics
-
-Get database statistics including document counts by source.
-
-**Example:**
-```
-get_statistics()
-```
-
 ## Usage Patterns
 
 ### Finding Information
@@ -246,15 +226,10 @@ get_statistics()
 
 ### Exploring Documentation Structure
 
-1. **Get available sections:**
-   ```
-   get_sections(source="airflow-core")
-   ```
-
-2. **Search within section:**
-   ```
-   search_documentation(query="operators", section="Operators")
-   ```
+**Search within section:**
+```
+search_documentation(query="operators", section="Core Concepts")
+```
 
 ### API-Specific Queries
 

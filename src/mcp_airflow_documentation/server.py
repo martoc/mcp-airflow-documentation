@@ -123,65 +123,6 @@ def read_documentation(source: str, path: str) -> str:
         return f"Error reading documentation: {e}"
 
 
-@mcp.tool()
-def get_sections(source: str | None = None) -> str:
-    """Get list of available documentation sections.
-
-    Retrieve all unique sections to help narrow down searches.
-
-    Args:
-        source: Optional source filter ('airflow-core' or 'airflow-python-client')
-
-    Returns:
-        List of available sections
-    """
-    try:
-        db = get_db()
-        sections = db.get_sections(source=source)
-
-        if not sections:
-            return "No sections found"
-
-        source_display = f" ({source})" if source else ""
-        output = f"Available sections{source_display}:\n\n"
-
-        for section in sections:
-            output += f"- {section}\n"
-
-        return output.strip()
-
-    except FileNotFoundError as e:
-        return f"Error: {e}"
-    except Exception as e:
-        return f"Error getting sections: {e}"
-
-
-@mcp.tool()
-def get_statistics() -> str:
-    """Get documentation database statistics.
-
-    Returns counts of indexed documents by source and total counts.
-
-    Returns:
-        Database statistics
-    """
-    try:
-        db = get_db()
-        stats = db.get_stats()
-
-        output = "Airflow Documentation Statistics\n\n"
-        output += f"Airflow Core Documentation: {stats['airflow-core']} documents\n"
-        output += f"Python Client Documentation: {stats['airflow-python-client']} documents\n"
-        output += f"Total Documents: {stats['total']}\n"
-
-        return output
-
-    except FileNotFoundError as e:
-        return f"Error: {e}"
-    except Exception as e:
-        return f"Error getting statistics: {e}"
-
-
 def main() -> None:
     """Run the MCP server."""
     mcp.run()
