@@ -3,7 +3,7 @@
 import re
 from pathlib import Path
 
-import frontmatter  # type: ignore[import-untyped]
+import frontmatter
 
 from mcp_airflow_documentation.models import Document
 from mcp_airflow_documentation.parsers.base import DocumentParser
