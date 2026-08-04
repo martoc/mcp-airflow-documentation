@@ -45,4 +45,3 @@ data/repos/
 # Other
 .DS_Store
 Thumbs.db
-uv.lock
