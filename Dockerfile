@@ -26,6 +26,8 @@ RUN uv sync --locked --no-dev
 # Pre-index both documentation sources at build time
 RUN uv run --no-sync airflow-docs-index index
 
+EXPOSE 8000
+
 # Run the MCP server directly from the baked venv so no dependency
 # resolution happens on container start
 CMD ["/app/.venv/bin/mcp-airflow-documentation"]
