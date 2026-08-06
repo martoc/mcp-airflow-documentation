@@ -1,6 +1,6 @@
 .PHONY: init test build format lint typecheck clean
 .PHONY: index index-core index-client stats
-.PHONY: docker-build docker-run docker-clean
+.PHONY: docker-build docker-run docker-run-http docker-clean
 
 # Development
 init:
@@ -49,6 +49,9 @@ docker-build:
 
 docker-run:
 	docker run -i --rm mcp-airflow-documentation
+
+docker-run-http:
+	docker run -p 8000:8000 --rm -e MCP_TRANSPORT=http mcp-airflow-documentation
 
 docker-run-remote:
 	docker run -i --rm martoc/mcp-airflow-documentation:latest

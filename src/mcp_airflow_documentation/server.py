@@ -1,5 +1,6 @@
 """FastMCP server for Apache Airflow documentation search."""
 
+import os
 from pathlib import Path
 
 from fastmcp import FastMCP
@@ -124,8 +125,21 @@ def read_documentation(source: str, path: str) -> str:
 
 
 def main() -> None:
-    """Run the MCP server."""
-    mcp.run()
+    """Run the MCP server.
+
+    Transport defaults to stdio for backward compatibility with existing
+    per-session Docker invocations. Set MCP_TRANSPORT=http to run as a
+    long-lived HTTP server instead, optionally with MCP_HOST/MCP_PORT.
+    """
+    transport = os.environ.get("MCP_TRANSPORT", "stdio")
+    if transport == "stdio":
+        mcp.run(transport="stdio")
+    else:
+        # 0.0.0.0 is intentional: this binds inside a container, reachable
+        # only via the host-mapped port.
+        host = os.environ.get("MCP_HOST", "0.0.0.0")
+        port = int(os.environ.get("MCP_PORT", "8000"))
+        mcp.run(transport="http", host=host, port=port)
 
 
 if __name__ == "__main__":
